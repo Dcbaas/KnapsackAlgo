@@ -1,3 +1,5 @@
+//Nathan VandenHoek & David Baas
+
 #include <iostream>
 #include <vector>
 
@@ -9,10 +11,8 @@ int knapsack(std::vector<int> weight, std::vector<int> value, int maxWeight){
 		for(int w = 0; w <= maxWeight; ++w){
 			if(i == 0 || w == 0)
 				finalValues[i][w] = 0;
-			else if (weight.at(i - 1) <= w){
+			else if (weight.at(i - 1) <= w)
 				finalValues[i][w] = std::max(value.at(i-1) + finalValues[i-1][w-weight.at(i-1)], finalValues[i-1][w]);
-				
-			}
 			else
 				finalValues[i][w] = finalValues[i-1][w];
 		}
